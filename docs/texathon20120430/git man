@@ -1,0 +1,18 @@
+git clone sitename     μόνο μία φορά για να κάνω το πρώτο download
+
+git pull           κατεβάζω από το site
+
+git commit –a ή filename   
+
+git push -u origin master   ανεβάζω στο site πρώτα commit
+
+vi 
+i για να το ανοίξω 
+esc για να σταματήσω
+shift+: για να μπω στο μενού
+x για να κλείσει
+
+git add -A     για να προσθέσω αρχείο ή φάκελο /* για πολλά αρχεία εντός φακέλου
+git reset filename   για να μην στείλω στο αρχείο στο site (χωρίς να το χάσω)tus
+
+git status    λέει την κατάσταση του Repository (ποια αρχεία έχεις αλλάξει) 
