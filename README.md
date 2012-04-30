@@ -10,7 +10,7 @@ squibby-latex - Υποστήριξη για LaTeX στο Squibby
      squibby (που είναι βασισμένο στο ubuntu 12.04 και άρα έχει
      TeXLive 2009 by default).
 
-   * Metapackage "texlive-squibby) που να εγκαθιστά την απαραίτητη
+   * Metapackage "texlive-squibby" που να εγκαθιστά την απαραίτητη
      υποδομή (vim-nox, kile, texworks, synctex, okular, ktikz, κλπ)
 
    * Πακέτα (.sty, .cls, .ins, .dtx) για μία σειρά από τύπους εγγράφων
