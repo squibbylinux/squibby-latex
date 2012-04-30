@@ -33,4 +33,6 @@ squibby-latex - Υποστήριξη για LaTeX στο Squibby
      hackathons κλπ στο ChaniaLUG (επιπλέον του ό,τι υπάρχει στο
      wiki του Συλλόγου).
 
-    * Καλημέρα 
+   * Καλημέρα 
+
+   * Καλημέρα E=mc^2
