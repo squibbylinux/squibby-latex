@@ -21,6 +21,7 @@
 %Στοίχιση του κειμένου στο φύλλο Α4
 \RequirePackage{geometry}
 \geometry{left=2.54cm, top=2.18cm, right=2.54cm, bottom=2cm}
+\RequirePackage{ifthen}
 
 %Βασικά στοιχεία κεφαλίδας
 \newcommand{\schoolname}[1]{\def\@schoolname{#1}}
@@ -46,7 +47,8 @@
 			\end{minipage}
 			\begin{table}[h]
 			\centering			
-			\large{ΓΡΑΠΤΕΣ ΠΡΟΑΓΩΓΙΚΕΣ ΕΞΕΤΑΣΕΙΣ} \\
+			\large{ΓΡΑΠΤΕΣ 
+			\ifthenelse{\equal{\@schoolclass}{Γ}}{ΑΠΟΛΥΤΗΡΙΕΣ}{ΠΡΟΑΓΩΓΙΚΕΣ} ΕΞΕΤΑΣΕΙΣ} \\
 			\large{ΠΕΡΙΟΔΟΥ ΜΑΙΟΥ - ΙΟΥΝΙΟΥ \@syear} \\
 			\large{\@lesson}
 			\end{table}\\
@@ -61,8 +63,7 @@
 \newcommand{\monades}[1]{\hfill \scriptsize \textbf{#1 Μονάδες} \normalsize}
 
 %Βασικά στοιχεία καθηγητών
-\newcommand{\teachernames}[3]{\def\@teachernames{#1 \\ #2 \\ #3}}
-\newcommand{\teacheradd}[3]{\def\@teacheradd{#1 \\ #2 \\ #3}}
+\newcommand{\teachername}[1]{\def\@teachername{#1}}
 \newcommand{\principal}[1]{\def\@principal{#1}}
 
 \newcommand{\schoolfinish}[1]{	
@@ -82,8 +83,7 @@
 			\centering			
 			Οι καθηγητές \\
 			\vspace{0.2cm}
-			\@teachernames \\
-			\@teacheradd
+			\@teachername
 			\end{minipage}
 			}
 
