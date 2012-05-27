@@ -21,18 +21,25 @@
 %Στοίχιση του κειμένου στο φύλλο Α4
 \RequirePackage{geometry}
 \geometry{left=2.54cm, top=2.18cm, right=2.54cm, bottom=2cm}
+
+%Πακέτο για την συνθήκη if
 \RequirePackage{ifthen}
 
 %Βασικά στοιχεία κεφαλίδας
 \newcommand{\schoolname}[1]{\def\@schoolname{#1}}
 \newcommand{\schoolclass}[1]{\def\@schoolclass{#1}}
-\newcommand{\schoolyear}[1]{\def\@schoolyear{#1}}
 \newcommand{\schooldate}[1]{\def\@schooldate{#1}}
-\newcommand{\syear}[1]{\def\@syear{#1}}
 \newcommand{\lesson}[1]{\def\@lesson{#1}}
 
+\def\Year{\expandafter\YEAR\the\year}
+\def\YEAR#1#2#3#4{#1#2#3#4}
+
+\newcounter{y}
+\setcounter{y}{\Year \addtocounter{y}{-1}}
+\newcommand{\schoolyear}{\arabic{y}} 
+
 \newcommand{\schoolbasic}[1]{
-			\noindent			
+			\noindent
 			\begin{minipage}[b][1.4cm][t]{6cm}			
 			\centering			
 			ΕΛΛΗΝΙΚΗ ΔΗΜΟΚΡΑΤΙΑ \\
@@ -41,7 +48,7 @@
 			\hfill			
 			\begin{minipage}[b][1.4cm][t]{4.5cm}
 			\centering			
-			Σχολικό έτος \@schoolyear \\
+			Σχολικό έτος \schoolyear - \Year \\
 			Τάξη: \@schoolclass \\
 			Ημερομηνία: \@schooldate
 			\end{minipage}
@@ -49,7 +56,7 @@
 			\centering			
 			\large{ΓΡΑΠΤΕΣ 
 			\ifthenelse{\equal{\@schoolclass}{Γ}}{ΑΠΟΛΥΤΗΡΙΕΣ}{ΠΡΟΑΓΩΓΙΚΕΣ} ΕΞΕΤΑΣΕΙΣ} \\
-			\large{ΠΕΡΙΟΔΟΥ ΜΑΙΟΥ - ΙΟΥΝΙΟΥ \@syear} \\
+			\large{ΠΕΡΙΟΔΟΥ ΜΑΙΟΥ - ΙΟΥΝΙΟΥ \Year} \\
 			\large{\@lesson}
 			\end{table}\\
 			\\
