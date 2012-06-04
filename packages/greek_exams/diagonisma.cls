@@ -29,6 +29,10 @@
 %Πακέτο για την συνθήκη if
 \RequirePackage{ifthen}
 
+%Πακέτο αρίθμησης με λατινικούς χαρακτήρες (i. ii. iii. κ.τ.λ.)
+\RequirePackage{enumerate}
+\renewcommand{\labelenumi}{\roman{enumi}.}
+
 %------------------------Βασικά στοιχεία κεφαλίδας---------------------------------------------
 \newcommand{\schoolclass}[1]{
 							\ifthenelse{\equal{#1}{}}{\def\@schoolclass{}}{\def\@schoolclass{#1}}
