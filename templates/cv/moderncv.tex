@@ -1,0 +1,58 @@
+%!TEX TS-program
+%!TEX encoding=UTF-8
+\documentclass[11pt,a4paper]{moderncv}
+
+\moderncvstyle{casual}  % casual, classic, banking
+\moderncvcolor{blue}    % blue, orange, green, red, purple, grey, black
+
+% Greek/Latin Hyphenation
+\usepackage[Greek,Latin]{ucharclasses}
+\setTransitionsForGreek{\setlanguage{greek}}{\setlanguage{english}}
+
+\usepackage{xltxtra}
+\usepackage{xgreek}
+
+\usepackage{fontspec}
+\setmainfont[Scale=1,Mapping=tex-text]{Linux Libertine O}
+\setsansfont[Mapping=tex-text,]{GFS Artemisia}
+\setmonofont[Mapping=tex-text]{DejaVu Sans Mono}
+\usepackage[scale=0.85]{geometry}
+
+\AtBeginDocument{\recomputelengths}
+
+\firstname{Ευκλείδης}
+\familyname{Αλεξανδρεύς}
+\title{Καθηγητής Μαθηματικός}
+\address{Βιβλιοθήκη Αλεξάνδρειας}{12345 Αλεξάνδρεια}
+\mobile{+1~0011~223~355}
+\phone{+2~0123~456~789}
+\fax{+3~0123~456~789}
+\email{eukleides@alexandria.gr}
+%\extrainfo{}
+\photo[64pt][0.4pt]{euclid}
+
+\begin{document}
+\maketitle
+
+%\section{Εκπαίδευση}
+%\cventry
+
+%\section{Μεταπτυχιακές Σπουδές}
+%\cventry
+
+%\section{Διδακτορική Διατριβή}
+%\cvline{Τίτλος}
+%\cvline{Επιβλέποντες}
+%\cvline{Περίληψη}
+
+%\section{Επάγγελμα}
+%\cventry
+
+\section{Γλώσσες}
+\cvlanguage{Αρχαία Ελληνικά}{Άπταιστα}{Μητρική Γλώσσα}
+
+\section{Γνώσεις Η/Υ}
+\cvcomputer{Γλώσσες Προγραμματισμού}{Προτασιακή Λογική}{}{}
+%\cvcomputer{Αρχιτεκτονικές}{Άβακας,Υπολογιστής Αντικυθήρων}
+
+\end{document}
