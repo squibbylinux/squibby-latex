@@ -1,6 +1,8 @@
-all: moderncv.pdf europecv.pdf
+all: cv.pdf
 
-.pdf.tex:
+.SUFFIXES: .tex .pdf
+
+.tex.pdf:
 	xelatex $<
 
 clean:
