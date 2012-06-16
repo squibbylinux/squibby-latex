@@ -78,7 +78,7 @@
 			\large{ΓΡΑΠΤΕΣ 
 			\ifthenelse{\equal{\@schoolclass}{Γ}}{ΑΠΟΛΥΤΗΡΙΕΣ}{ΠΡΟΑΓΩΓΙΚΕΣ} ΕΞΕΤΑΣΕΙΣ} \\
 			\large{ΠΕΡΙΟΔΟΥ ΜΑΙΟΥ - ΙΟΥΝΙΟΥ \Year} \\
-			\large{\@lesson}
+			\large{\ifthenelse{\equal{\@lesson}{ΑΛΓΕΒΡΑ}}{ΣΤΗΝ}{\ifthenelse{\equal{\@lesson}{ΓΕΩΜΕΤΡΙΑ}}{ΣΤΗ}{\ifthenelse{\equal{\@lesson}							{ΣΤΑΤΙΣΤΙΚΗ}}{ΣΤΗ}{ΣΤΑ}}} \@lesson}
 			\end{table}\\
 			\\
 			}
