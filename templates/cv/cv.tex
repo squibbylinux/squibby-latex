@@ -1,0 +1,66 @@
+%!TEX TS-program
+%!TEX encoding=UTF-8
+\documentclass[11pt,a4paper]{moderncv}
+
+\moderncvstyle{casual}  % casual, classic, banking
+\moderncvcolor{blue}    % blue, orange, green, red, purple, grey, black
+
+% Greek/Latin Hyphenation
+\usepackage[Greek,Latin]{ucharclasses}
+\setTransitionsForGreek{\setlanguage{greek}}{\setlanguage{english}}
+
+\usepackage{xltxtra}
+\usepackage{xgreek}
+
+\usepackage{fontspec}
+\setmainfont[Scale=1,Mapping=tex-text]{Linux Libertine O}
+\setsansfont[Mapping=tex-text,]{GFS Artemisia}
+\setmonofont[Mapping=tex-text]{DejaVu Sans Mono}
+\usepackage[scale=0.85]{geometry}
+
+\AtBeginDocument{\recomputelengths}
+
+\firstname{Γιάννης}
+\familyname{Αγνωστόπουλος}
+\title{Βιογραφικό Σημείωμα}
+\address{Αγνωστάκη και Αγνωστίδη 42}{11252 Αθήνα}
+\mobile{+30~699~123~5713}
+\phone{+30~210~112~3581}
+\fax{+30~210~112~3581}
+\email{jagnostopoulos@acompany.gr}
+\extrainfo{github: jagnostopoulos}
+\photo[64pt][0.4pt]{jdoe}
+
+\begin{document}
+\maketitle
+
+\section{Εκπαίδευση}
+\cventry{1995--2001}{Πτυχίο}{Εθνικό Μετσόβειο Πολυτεχνείο}{Αθήνα}{Μηχανικός Υπολογιστών}{}
+
+\section{Μεταπτυχιακές Σπουδές}
+\cventry{2002--2005}{Msc}{Mars University}{Robotics}{}{}
+
+\section{Διδακτορική Διατριβή}
+\cvline{Τίτλος}{\emph Τεχνικές ανάγνωσης σκέψης για Ρομπότ}
+\cvline{Επιβλέπων}{Krishnamurthi Kseskisian}
+\cvline{Περίληψη}{\small Τεχνικές ανάγνωσης σκέψης για χρήση σε έξυπνα ρομπότ υπηρέτες.}
+
+\section{Επάγγελμα}
+\cventry{1993--1995}{Web designer}{TheIrrelevantWebCorp}{Αθήνα}{}{Σχεδιασμός Ιστοσελίδων}
+\cventry{1995--1998}{Sysadmin}{NTUA}{Αθήνα}{}{Διαχειριστής υπολογιστών και δικτύων}
+\cventry{1998--2001}{Ερευνητής}{NTUA, Εργαστήριο Ρομποτικής}{Αθήνα}{}{Ερευνητής στη Ρομποτική}
+\cventry{2002--2006}{CTO}{RoboCorp, Inc}{New York}{}{Chief Technologist}
+\cventry{2007--Today}{Founder}{RoboServants Inc}{San Fransisco}{}{Founder and Chief Technologist}
+
+
+\section{Γλώσσες}
+\cvlanguage{Ελληνικά}{Άπταιστα}{Μητρική Γλώσσα}
+\cvlanguage{Αγγλικά}{Άπταιστα}{}
+\cvlanguage{Γερμανικά}{Πολύ Καλά}{}
+\cvlanguage{Ισπανικά}{Πολύ Καλά}{}
+\cvlanguage{Κινεζικά}{Καλά}{}
+
+\section{Γνώσεις Η/Υ}
+\cvcomputer{Γλώσσες Προγραμματισμού}{C/C++, Python, Java, Haskell, LISP}{}{}
+
+\end{document}
