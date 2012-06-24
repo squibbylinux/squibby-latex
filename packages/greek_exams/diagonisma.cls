@@ -9,7 +9,7 @@
 %% ============================================================================
 
 \NeedsTeXFormat{LaTeX2e}[1996/12/01]
-\ProvidesClass{examsgr}[2009/05/20 v1.0
+\ProvidesClass{examsgr}[2012/06/24 v1.0
  A Greek exams document class file]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
