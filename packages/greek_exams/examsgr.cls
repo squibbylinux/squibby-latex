@@ -170,8 +170,8 @@
 			\begin{minipage}[b][1.5cm][t]{5.5cm}			
 			\centering			
 			Ο Διευθυντής \\
-			\vspace{1cm}
-			\@principal \\
+			\vspace{0.6cm}
+			\@principal
 			\end{minipage}
 			\hfill	
 			\begin{minipage}[b][1.5cm][t]{5.5cm}
