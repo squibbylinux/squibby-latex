@@ -9,7 +9,7 @@
 %% ============================================================================
 
 \NeedsTeXFormat{LaTeX2e}[1996/12/01]
-\ProvidesClass{examsgr}[2009/05/20 v1.0
+\ProvidesClass{examsgr}[2012/06/24 v2.0
  A Greek exams document class file]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
@@ -30,6 +30,10 @@
 \renewcommand{\labelenumi}{\roman{enumi}.}
 
 %------------------------Βασικά στοιχεία κεφαλίδας---------------------------------------------
+\newcommand{\school}[1]{
+							\ifthenelse{\equal{#1}{}}{\def\@school{ΛΥΚΕΙΟ}}{\def\@school{#1}}
+							}
+							
 \newcommand{\schoolname}[1]{
 							\ifthenelse{\equal{#1}{}}{\def\@schoolname{}}{\def\@schoolname{#1}}
 							}
@@ -78,37 +82,72 @@
 			\large{ΓΡΑΠΤΕΣ 
 			\ifthenelse{\equal{\@schoolclass}{Γ}}{ΑΠΟΛΥΤΗΡΙΕΣ}{ΠΡΟΑΓΩΓΙΚΕΣ} ΕΞΕΤΑΣΕΙΣ} \\
 			\large{ΠΕΡΙΟΔΟΥ ΜΑΙΟΥ - ΙΟΥΝΙΟΥ \Year} \\
-			\large{\ifthenelse{\equal{\@lesson}{ΑΛΓΕΒΡΑ}}{ΣΤΗΝ}{\ifthenelse{\equal{\@lesson}{ΓΕΩΜΕΤΡΙΑ}}{ΣΤΗ}{\ifthenelse{\equal{\@lesson}							{ΣΤΑΤΙΣΤΙΚΗ}}{ΣΤΗ}{ΣΤΑ}}} \@lesson}
-			\end{table}\\
-			\\
+			\large{\ifthenelse{\equal{\@lesson}{ΑΛΓΕΒΡΑ}}{ΣΤΗΝ}{\ifthenelse{\equal{\@lesson}{ΓΕΩΜΕΤΡΙΑ}}{ΣΤΗ}{\ifthenelse{\equal{\@lesson}							{ΣΤΑΤΙΣΤΙΚΗ}}{ΣΤΗ}{ΣΤΑ}}} \@lesson}\\
+			\ifthenelse{\equal{\@school}{ΓΥΜΝΑΣΙΟ}}{\vspace{1cm}\large\textbf{Θεωρία} \\ \normalsize}{}
+			\end{table}
 			}
 
-%------------------------Βασικά στοιχεία Θεμάτων & υποθεμάτων---------------------------
+%------------------------Βασικά στοιχεία Θεμάτων & υποθεμάτων Λυκείου---------------------------
 \newcounter{themanumber}
 \setcounter{themanumber}{1}
 \newcommand{\themata}[1]{\noindent \large \textbf{Θέμα} \ifthenelse{\equal{\arabic{themanumber}}{1}}{\textbf{Α}}{\ifthenelse{\equal{\arabic{themanumber}}{2}}{\textbf{B}}{\ifthenelse{\equal{\arabic{themanumber}}{3}}{\textbf{Γ}}{\ifthenelse{\equal{\arabic{themanumber}}{4}}{\textbf{Δ}}{\ifthenelse{\equal{\arabic{themanumber}}{5}}{\textbf{Ε}}{}}}}} \addtocounter{themanumber}{1}\\ \normalsize \setcounter{sub}{1}}
 
 \newcounter{sub}
-\newcommand{\subthemata}[1]{\ifthenelse{\equal{\arabic{themanumber}}{2}}{\textbf{Α}}{\ifthenelse{\equal{\arabic{themanumber}}{3}}{\textbf{B}}{\ifthenelse{\equal{\arabic{themanumber}}{4}}{\textbf{Γ}}{\ifthenelse{\equal{\arabic{themanumber}}{5}}{\textbf{Δ}}{\ifthenelse{\equal{\arabic{themanumber}}{6}}{\textbf{Ε}}{sdfgh}}}}}\textbf{\arabic{sub}}. \addtocounter{sub}{1}}
+\newcommand{\subthemata}[1]{\ifthenelse{\equal{\arabic{themanumber}}{2}}{\textbf{Α}}{\ifthenelse{\equal{\arabic{themanumber}}{3}}{\textbf{B}}{\ifthenelse{\equal{\arabic{themanumber}}{4}}{\textbf{Γ}}{\ifthenelse{\equal{\arabic{themanumber}}{5}}{\textbf{Δ}}{\ifthenelse{\equal{\arabic{themanumber}}{6}}{\textbf{Ε}}{}}}}}\textbf{\arabic{sub}}. \addtocounter{sub}{1}}
 
 \newcommand{\monades}[1]{\noindent \hfill \scriptsize \textbf{#1 Μονάδες} \normalsize}
 
-%------------------------Δημιουργία Θεμάτων & υποθεμάτων--------------------------------
-\newcommand{\thema}[2]{\themata \\ #1
+%------------------------Βασικά στοιχεία Θεμάτων Γυμνασίου---------------------------
+\newcounter{gthemanumber}
+\setcounter{gthemanumber}{1}
+\newcommand{\gthemata}[1]{\ifthenelse{\equal{\arabic{gthemanumber}}{1}}{\noindent \large \textbf{Θεωρία} \textbf{Α}}{\ifthenelse{\equal{\arabic{gthemanumber}}{2}}{\noindent \large \textbf{Θεωρία} \textbf{B}}{\ifthenelse{\equal{\arabic{gthemanumber}}{3}}{
+\begin{table}[h]
+\centering
+\large\textbf{Ασκήσεις}
+\end{table}
+\noindent \large \textbf{Άσκηση} \textbf{Α}}{\ifthenelse{\equal{\arabic{gthemanumber}}{4}}{\noindent \large \textbf{Άσκηση} \textbf{Β}}{\ifthenelse{\equal{\arabic{gthemanumber}}{5}}{\noindent \large \textbf{Άσκηση} \textbf{Γ}}{}}}}} \addtocounter{gthemanumber}{1}\\ \normalsize \setcounter{gsub}{1}}
 
+\newcounter{gsub}
+\newcommand{\gsubthemata}[1]{\ifthenelse{\equal{\arabic{gthemanumber}}{2}}{\textbf{Α}}{\ifthenelse{\equal{\arabic{gthemanumber}}{3}}{\textbf{B}}{\ifthenelse{\equal{\arabic{gthemanumber}}{4}}{\textbf{Α}}{\ifthenelse{\equal{\arabic{gthemanumber}}{5}}{\textbf{Β}}{\ifthenelse{\equal{\arabic{gthemanumber}}{6}}{\textbf{Γ}}{}}}}}\textbf{\arabic{gsub}}. \addtocounter{gsub}{1}}
+
+%------------------------Βασικά στοιχεία Θεμάτων & υποθεμάτων---------------------------
+
+
+%------------------------Δημιουργία Θεμάτων & υποθεμάτων--------------------------------
+\newcommand{\thema}[2]{
+\ifthenelse{\equal{\@school}{ΓΥΜΝΑΣΙΟ}}{
+					
+					\gthemata
+					
+					#1 
+					
 					\ifthenelse{\equal{#2}{}}{}{\noindent \monades{#2}}
 					
-					\vspace{1cm}				
+					\vspace{0.5cm}}{
+					
+					\themata
+					
+					#1	
+					
+					\ifthenelse{\equal{#2}{}}{}{\noindent \monades{#2}}
+
+					\vspace{0.5cm}}				
 					}
 
 \newcommand{\subthema}[2]{
-					\noindent \subthemata 
-					
-					#1
+\ifthenelse{\equal{\@school}{ΓΥΜΝΑΣΙΟ}}{\noindent \gsubthemata
 
+					#1 
+					
 					\ifthenelse{\equal{#2}{}}{}{\noindent \monades{#2}}		
 					
-					\vspace{0.3cm}			
+					\vspace{0.3cm}}{\noindent \subthemata 
+					
+					#1 
+					
+					\ifthenelse{\equal{#2}{}}{}{\noindent \monades{#2}}		
+					
+					\vspace{0.3cm}}		
 					}
 
 %------------------------Βασικά στοιχεία καθηγητών---------------------------------------------
@@ -123,8 +162,9 @@
 %------------------------Δημιουργία καθηγητών---------------------------------------------
 \newcommand{\schoolfinish}[1]{	
 			\vspace{1cm}
-			\begin{center}						
-			ΚΑΛΗ ΕΠΙΤΥΧΙΑ
+			\begin{center}
+			\ifthenelse{\equal{\@school}{ΓΥΜΝΑΣΙΟ}}{Από τα δύο θέματα θεωρίας, να απαντήσετε \textbf{ΜΟΝΟ} στο ένα \\ και από τα τρία θέματα των 					ασκήσεων να απαντήσετε \textbf{ΜΟΝΟ} στα δύο. \\ \vspace{0.5cm} ΚΑΛΗ ΕΠΙΤΥΧΙΑ}{Να απαντήσετε σε \textbf{ΟΛΑ} τα θέματα. \\ 	
+			\vspace{0.5cm} ΚΑΛΗ ΕΠΙΤΥΧΙΑ}						
 			\end{center}				
 			\vspace{.1in}
 			\begin{minipage}[b][1.5cm][t]{5.5cm}			
@@ -136,7 +176,7 @@
 			\hfill	
 			\begin{minipage}[b][1.5cm][t]{5.5cm}
 			\centering			
-			Οι καθηγητές \\
+			Οι εισηγητές \\
 			\vspace{0.2cm}
 			\@teachername
 			\end{minipage}
