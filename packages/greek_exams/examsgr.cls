@@ -9,7 +9,7 @@
 %% ============================================================================
 
 \NeedsTeXFormat{LaTeX2e}[1996/12/01]
-\ProvidesClass{examsgr}[2012/06/24 v2.0
+\ProvidesClass{examsgr}[2012/06/25 v3.0
  A Greek exams document class file]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
@@ -53,7 +53,15 @@
 \newcommand{\schoolplace}[1]{
 							\ifthenelse{\equal{#1}{}}{\def\@schoolplace{}}{\def\@schoolplace{#1}}
 							}
+
+\newcommand{\style}[1]{
+							\ifthenelse{\equal{#1}{}}{\def\@style{1}}{\def\@style{#1}}
+							}
 							
+\newcommand{\gimage}[1]{
+							\ifthenelse{\equal{#1}{}}{\def\@gimage{6}}{\def\@gimage{#1}}
+							}
+
 %------------------------Δημιουργία κεφαλίδας---------------------------------------------
 \def\Year{\expandafter\YEAR\the\year}
 \def\YEAR#1#2#3#4{#1#2#3#4}
@@ -63,6 +71,27 @@
 \newcommand{\schoolyear}{\arabic{y}} 
 
 \newcommand{\schoolbasic}[1]{
+			\ifthenelse{\equal{\@style}{2}}{
+			\includegraphics[scale=0.50]{images/s\@gimage .jpeg}\\		
+			
+			\noindent
+			\begin{minipage}[b][1.4cm][t]{9cm}					\@schoolname \\
+			\ifthenelse{\equal{\@schoolclass}{Γ}}{ΑΠΟΛΥΤΗΡΙΕΣ}{ΠΡΟΑΓΩΓΙΚΕΣ} ΕΞΕΤΑΣΕΙΣ \\
+			ΠΕΡΙΟΔΟΥ ΜΑΙΟΥ - ΙΟΥΝΙΟΥ\\
+			ΗΜΕΡΟΜΗΝΙΑ: \@schooldate
+			\end{minipage}
+			\hfill			
+			\begin{minipage}[b][1.4cm][t]{8cm}
+			ΣΧΟΛΙΚΟ ΕΤΟΣ: \schoolyear - \Year, ΤΑΞΗ: \@schoolclass \\
+			ΜΑΘΗΜΑ: \@lesson \\
+			ΕΚΠ/ΚΟΙ: \@teachername
+			\end{minipage}
+			\begin{table}[h]
+			\centering			
+			\large{\underline{ΘΕΜΑΤΑ ΓΡΑΠΤΩΝ ΕΞΕΤΑΣΕΩΝ}} \\
+			\ifthenelse{\equal{\@school}{ΓΥΜΝΑΣΙΟ}}{\vspace{1cm}\large\textbf{Θεωρία} \\ \normalsize}{}
+			\end{table}
+			}{
 			\noindent
 			\begin{minipage}[b][1.4cm][t]{6cm}			
 			\centering			
@@ -86,6 +115,7 @@
 			\ifthenelse{\equal{\@school}{ΓΥΜΝΑΣΙΟ}}{\vspace{1cm}\large\textbf{Θεωρία} \\ \normalsize}{}
 			\end{table}
 			}
+}
 
 %------------------------Βασικά στοιχεία Θεμάτων & υποθεμάτων Λυκείου---------------------------
 \newcounter{themanumber}
