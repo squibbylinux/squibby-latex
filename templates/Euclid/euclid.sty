@@ -1,0 +1,729 @@
+%% ============================================================================
+%% euclid.sty - A euclid package file
+%% 
+%% (c) 2012 Evripidis Themelis <ethemelis@gmail.com>
+%%
+%% LPPL LaTeX Public Project License
+%%
+%% ============================================================================
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{euclid}
+  [2012/06/23 v1.0 euclid package]
+
+%Στοίχιση του κειμένου στο φύλλο Α4
+\RequirePackage{geometry}
+\geometry{left=2.54cm, top=2.18cm, right=2.54cm, bottom=2cm}
+
+%Πακέτο για την συνθήκη if
+\RequirePackage{ifthen}
+
+%Πακέτο tikz
+\RequirePackage{pgf,tikz}
+\usetikzlibrary{arrows}
+
+%===========================================================================================================================================
+%ΙΣΟΣΚΕΛΕΣ ΤΡΙΓΩΝΟ
+%===========================================================================================================================================
+%Ορισμός ύψος τριγώνου
+\newcommand{\ipsos}[1]{
+							\ifthenelse{\equal{#1}{Α}}{\draw (0,3)-- (0,0);}{\ifthenelse{\equal{#1}{Β}}{\draw (-1.3,0)-- (0.89,0.95);}{\ifthenelse{\equal{#1}{Γ}}{\draw (1.3,0)-- (-0.89,0.95);}{}}}
+							}
+
+\newcommand{\ipsosname}[2]{
+							\ifthenelse{\equal{#1}{Α}}{\fill (0,0) circle (1.5pt);
+														\draw (0,-0.2) node {\simo{}};}{\ifthenelse{\equal{#1}{Β}}
+														{\fill (0.89,0.95) circle (1.5pt);
+														\draw (1.09,1.05) node {\simo{}};}{\ifthenelse{\equal{#1}{Γ}}
+														{\fill (-0.89,0.95) circle (1.5pt);
+														\draw (-1.09,1.05) node {\simo{}};}{}}}
+							}
+
+%Ορισμός διχοτόμου γωνίας τριγώνου
+\newcommand{\dixotomos}[1]{
+							\ifthenelse{\equal{#1}{Α}}{\draw (0,3)-- (0,0);}{\ifthenelse{\equal{#1}{Β}}{\draw (-1.3,0)-- (0.72,1.33);}{\ifthenelse{\equal{#1}{Γ}}{\draw (1.3,0)-- (-0.72,1.33);}{}}}
+							}
+
+\newcommand{\dixotomosname}[1]{
+							\ifthenelse{\equal{#1}{Α}}{\fill (0,0) circle (1.5pt);
+														\draw (0,-0.2) node {\simo{}};}{\ifthenelse{\equal{#1}{Β}}
+														{\fill (0.72,1.33) circle (1.5pt);
+														\draw (0.95,1.45) node {\simo{}};}{\ifthenelse{\equal{#1}{Γ}}
+														{\fill (-0.72,1.33) circle (1.5pt);
+														\draw (-0.95,1.45) node {\simo{}};}{}}}
+							}
+
+%Ορισμός διαμέσου τριγώνου
+\newcommand{\diamesos}[1]{
+							\ifthenelse{\equal{#1}{Α}}{\draw (0,3)-- (0,0);}{\ifthenelse{\equal{#1}{Β}}{\draw (-1.3,0)-- (0.65,1.5);}{\ifthenelse{\equal{#1}{Γ}}{\draw (1.3,0)-- (-0.65,1.5);}{}}}
+							}
+
+\newcommand{\diamesosname}[1]{
+							\ifthenelse{\equal{#1}{Α}}{\fill (0,0) circle (1.5pt);
+														\draw (0,-0.2) node {\simo{}};}{\ifthenelse{\equal{#1}{Β}}
+														{\fill (0.65,1.5) circle (1.5pt);
+														\draw (0.84,1.73) node {\simo{}};}{\ifthenelse{\equal{#1}{Γ}}
+														{\fill (-0.65,1.5) circle (1.5pt);
+														\draw (-0.84,1.73) node {\simo{}};}{}}}
+							}
+
+
+\newcommand{\isoskeles}[3]{							
+\setcounter{sim}{1}
+%Ορισμός χωρίου
+\clip(-2.5,-0.5) rectangle (2.5,3.5);
+
+%Ορισμός ευθειών τριγώνου
+%ΑΒ
+\draw (0,3)-- (-1.3,0);
+%ΒΓ
+\draw (-1.3,0)-- (1.3,0);
+%ΑΓ
+\draw (1.3,0)-- (0,3);
+%Διχοτόμος
+\ifthenelse{\equal{#1}{διχοτόμος Α}} {\dixotomos{Α}} {\ifthenelse{\equal{#1}{διχοτόμος Β}} {\dixotomos{Β}} 
+{\ifthenelse{\equal{#1}{διχοτόμος Γ}}{\dixotomos{Γ}} {\ifthenelse{\equal{#1}{διχοτόμος Α,Β}}{\dixotomos{Α} \\ \dixotomos{Β}}{\ifthenelse{\equal{#1}{διχοτόμος Α,Γ}}{\dixotomos{Α} \\ \dixotomos{Γ}}{\ifthenelse{\equal{#1}{διχτοτόμος Β,Γ}}{\dixotomos{Β} \\ \dixotomos{Γ}}{\ifthenelse{\equal{#1}{διχοτόμος Α,Β,Γ}}{\dixotomos{Α} \\ \dixotomos{Β} \\ \dixotomos{Γ}}{}}}}}}}
+%Ύψος
+\ifthenelse{\equal{#2}{ύψος Α}} {\ipsos{Α}} {\ifthenelse{\equal{#2}{ύψος Β}} {\ipsos{Β}} 
+{\ifthenelse{\equal{#2}{ύψος Γ}}{\ipsos{Γ}} {\ifthenelse{\equal{#2}{ύψος Α,Β}}{\ipsos{Α} \\ \ipsos{Β}}{\ifthenelse{\equal{#2}{ύψος Α,Γ}}{\ipsos{Α} \\ \ipsos{Γ}}{\ifthenelse{\equal{#2}{ύψος Β,Γ}}{\ipsos{Β} \\ \ipsos{Γ}}{\ifthenelse{\equal{#2}{ύψος Α,Β,Γ}}{\ipsos{Α} \\ \ipsos{Β} \\ \ipsos{Γ}}{}}}}}}}
+%Διάμεσος
+\ifthenelse{\equal{#3}{διάμεσος Α}} {\diamesos{Α}} {\ifthenelse{\equal{#3}{διάμεσος Β}} {\diamesos{Β}} 
+{\ifthenelse{\equal{#3}{διάμεσος Γ}}{\diamesos{Γ}} {\ifthenelse{\equal{#3}{διάμεσος Α,Β}}{\diamesos{Α} \\ \diamesos{Β}}{\ifthenelse{\equal{#3}{διάμεσος Α,Γ}}{\diamesos{Α} \\ \diamesos{Γ}}{\ifthenelse{\equal{#3}{διάμεσος Β,Γ}}{\diamesos{Β} \\ \diamesos{Γ}}{\ifthenelse{\equal{#3}{διάμεσος Α,Β,Γ}}{\diamesos{Α} \\ \diamesos{Β} \\ \diamesos{Γ}}{}}}}}}}
+
+
+%Ορισμός σημείων
+\begin{scriptsize}
+%Σημείο Α
+\fill (0,3) circle (1.5pt);
+\draw (0,3.2) node {$\rm Α$};
+%Σημείο Β
+\fill (-1.3,0) circle (1.5pt);
+\draw (-1.4,-0.2) node {$\rm Β$};
+%Σημείο Γ
+\fill (1.3,0) circle (1.5pt);
+\draw (1.4,-0.2) node {$\rm Γ$};
+%Διχοτόμος
+\ifthenelse{\equal{#1}{διχοτόμος Α}} {\dixotomosname{Α}} {\ifthenelse{\equal{#1}{διχοτόμος Β}} {\dixotomosname{Β}} 
+{\ifthenelse{\equal{#1}{διχοτόμος Γ}}{\dixotomosname{Γ}} {\ifthenelse{\equal{#1}{διχοτόμος Α,Β}}{\dixotomosname{Α} \\ \dixotomosname{Β}}{\ifthenelse{\equal{#1}{διχοτόμος Α,Γ}}{\dixotomosname{Α} \\ \dixotomosname{Γ}}{\ifthenelse{\equal{#1}{διχτοτόμος Β,Γ}}{\dixotomosname{Β} \\ \dixotomosname{Γ}}{\ifthenelse{\equal{#1}{διχοτόμος Α,Β,Γ}}{\dixotomosname{Α} \\ \dixotomosname{Β} \\ \dixotomosname{Γ}}{}}}}}}}
+%Ύψος
+\ifthenelse{\equal{#2}{ύψος Α}} {\ipsosname{Α}} {\ifthenelse{\equal{#2}{ύψος Β}} {\ipsosname{Β}} 
+{\ifthenelse{\equal{#2}{ύψος Γ}}{\ipsosname{Γ}} {\ifthenelse{\equal{#2}{ύψος Α,Β}}{\ipsosname{Α} \\ \ipsosname{Β}}{\ifthenelse{\equal{#2}{ύψος Α,Γ}}{\ipsosname{Α} \\ \ipsosname{Γ}}{\ifthenelse{\equal{#2}{ύψος Β,Γ}}{\ipsosname{Β} \\ \ipsosname{Γ}}{\ifthenelse{\equal{#2}{ύψος Α,Β,Γ}}{\ipsosname{Α} \\ \ipsosname{Β} \\ \ipsosname{Γ}}{}}}}}}}
+
+%Διάμεσος
+\ifthenelse{\equal{#3}{διάμεσος Α}} {\diamesosname{Α}} {\ifthenelse{\equal{#3}{διάμεσος Β}} {\diamesosname{Β}} 
+{\ifthenelse{\equal{#3}{διάμεσος Γ}}{\diamesosname{Γ}} {\ifthenelse{\equal{#3}{διάμεσος Α,Β}}{\diamesosname{Α} \\ \diamesosname{Β}}{\ifthenelse{\equal{#3}{διάμεσος Α,Γ}}{\diamesosname{Α} \\ \diamesosname{Γ}}{\ifthenelse{\equal{#3}{διάμεσος Β,Γ}}{\diamesosname{Β} \\ \diamesosname{Γ}}{\ifthenelse{\equal{#3}{διάμεσος Α,Β,Γ}}{\diamesosname{Α} \\ \diamesosname{Β} \\ \diamesosname{Γ}}{}}}}}}}
+\end{scriptsize}
+}
+%ΤΕΛΟΣ
+%===========================================================================================================================================
+
+
+%===========================================================================================================================================
+%ΙΣΟΠΛΕΥΡΟ ΤΡΙΓΩΝΟ
+%===========================================================================================================================================
+%Ορισμός ύψος-διχοτόμος-διάμεσος τριγώνου
+\newcommand{\iso}[1]{
+							\ifthenelse{\equal{#1}{Α}}{\draw (0,3.46)-- (0,0);}{\ifthenelse{\equal{#1}{Β}}{\draw (-2,0)-- (1,1.73);}{\ifthenelse{\equal{#1}{Γ}}{\draw (2,0)-- (-1,1.73);}{}}}
+							}
+
+\newcommand{\isoname}[1]{
+							\ifthenelse{\equal{#1}{Α}}{\fill (0,0) circle (1.5pt);
+														\draw (0,-0.2) node {\simo{}};}{\ifthenelse{\equal{#1}{Β}}
+														{\fill (1,1.73) circle (1.5pt);
+														\draw (1.15,1.9) node {\simo{}};}{\ifthenelse{\equal{#1}{Γ}}
+														{\fill (-1,1.73) circle (1.5pt);
+														\draw (-1.15,1.9) node {\simo{}};}{}}}
+							}
+
+\newcommand{\isopleuro}[3]{							
+\setcounter{sim}{1}
+%Ορισμός χωρίου
+\clip(-2.5,-0.5) rectangle (2.5,3.8);
+
+%Ορισμός ευθειών τριγώνου
+%ΑΒ
+\draw (0,3.46)-- (-2,0);
+%ΒΓ
+\draw (-2,0)-- (2,0);
+%ΑΓ
+\draw (2,0)-- (0,3.46);
+%Διχοτόμος-Ύψος-Διάμεσος
+\ifthenelse{\equal{#1}{διχοτόμος Α}} {\iso{Α}} {\ifthenelse{\equal{#1}{διχοτόμος Β}} {\iso{Β}} 
+{\ifthenelse{\equal{#1}{διχοτόμος Γ}}{\iso{Γ}} {\ifthenelse{\equal{#1}{διχοτόμος Α,Β}}{\iso{Α} \\ \iso{Β}}{\ifthenelse{\equal{#1}{διχοτόμος Α,Γ}}{\iso{Α} \\ \iso{Γ}}{\ifthenelse{\equal{#1}{διχτοτόμος Β,Γ}}{\iso{Β} \\ \iso{Γ}}{\ifthenelse{\equal{#1}{διχοτόμος Α,Β,Γ}}{\iso{Α} \\ \iso{Β} \\ \iso{Γ}}{}}}}}}}
+
+\ifthenelse{\equal{#2}{ύψος Α}} {\iso{Α}} {\ifthenelse{\equal{#2}{ύψος Β}} {\iso{Β}} 
+{\ifthenelse{\equal{#2}{ύψος Γ}}{\iso{Γ}} {\ifthenelse{\equal{#2}{ύψος Α,Β}}{\iso{Α} \\ \iso{Β}}{\ifthenelse{\equal{#2}{ύψος Α,Γ}}{\iso{Α} \\ \iso{Γ}}{\ifthenelse{\equal{#2}{ύψος Β,Γ}}{\iso{Β} \\ \iso{Γ}}{\ifthenelse{\equal{#2}{ύψος Α,Β,Γ}}{\iso{Α} \\ \iso{Β} \\ \iso{Γ}}{}}}}}}}
+
+\ifthenelse{\equal{#3}{διάμεσος Α}} {\iso{Α}} {\ifthenelse{\equal{#3}{διάμεσος Β}} {\iso{Β}} 
+{\ifthenelse{\equal{#3}{διάμεσος Γ}}{\iso{Γ}} {\ifthenelse{\equal{#3}{διάμεσος Α,Β}}{\iso{Α} \\ \iso{Β}}{\ifthenelse{\equal{#3}{διάμεσος Α,Γ}}{\iso{Α} \\ \iso{Γ}}{\ifthenelse{\equal{#3}{διάμεσος Β,Γ}}{\iso{Β} \\ \iso{Γ}}{\ifthenelse{\equal{#3}{διάμεσος Α,Β,Γ}}{\iso{Α} \\ \iso{Β} \\ \iso{Γ}}{}}}}}}}
+
+%Ορισμός σημείων
+\begin{scriptsize}
+%Σημείο Α
+\fill (0,3.46) circle (1.5pt);
+\draw (0,3.66) node {$\rm Α$};
+%Σημείο Β
+\fill (-2,0) circle (1.5pt);
+\draw (-2.1,-0.2) node {$\rm Β$};
+%Σημείο Γ
+\fill (2,0) circle (1.5pt);
+\draw (2.15,-0.2) node {$\rm Γ$};
+%Διχοτόμος-Ύψος-Διάμεσος
+\ifthenelse{\equal{#1}{διχοτόμος Α}} {\isoname{Α}} {\ifthenelse{\equal{#1}{διχοτόμος Β}} {\isoname{Β}} 
+{\ifthenelse{\equal{#1}{διχοτόμος Γ}}{\isoname{Γ}} {\ifthenelse{\equal{#1}{διχοτόμος Α,Β}}{\isoname{Α} \\ \isoname{Β}}{\ifthenelse{\equal{#1}{διχοτόμος Α,Γ}}{\isoname{Α} \\ \isoname{Γ}}{\ifthenelse{\equal{#1}{διχτοτόμος Β,Γ}}{\isoname{Β} \\ \isoname{Γ}}{\ifthenelse{\equal{#1}{διχοτόμος Α,Β,Γ}}{\isoname{Α} \\ \isoname{Β} \\ \isoname{Γ}}{}}}}}}}
+
+\ifthenelse{\equal{#2}{ύψος Α}} {\isoname{Α}} {\ifthenelse{\equal{#2}{ύψος Β}} {\isoname{Β}} 
+{\ifthenelse{\equal{#2}{ύψος Γ}}{\isoname{Γ}} {\ifthenelse{\equal{#2}{ύψος Α,Β}}{\isoname{Α} \\ \isoname{Β}}{\ifthenelse{\equal{#2}{ύψος Α,Γ}}{\isoname{Α} \\ \isoname{Γ}}{\ifthenelse{\equal{#2}{ύψος Β,Γ}}{\isoname{Β} \\ \isoname{Γ}}{\ifthenelse{\equal{#2}{ύψος Α,Β,Γ}}{\isoname{Α} \\ \isoname{Β} \\ \isoname{Γ}}{}}}}}}}
+
+\ifthenelse{\equal{#3}{διάμεσος Α}} {\isoname{Α}} {\ifthenelse{\equal{#3}{διάμεσος Β}} {\isoname{Β}} 
+{\ifthenelse{\equal{#3}{διάμεσος Γ}}{\isoname{Γ}} {\ifthenelse{\equal{#3}{διάμεσος Α,Β}}{\isoname{Α} \\ \isoname{Β}}{\ifthenelse{\equal{#3}{διάμεσος Α,Γ}}{\isoname{Α} \\ \isoname{Γ}}{\ifthenelse{\equal{#3}{διάμεσος Β,Γ}}{\isoname{Β} \\ \isoname{Γ}}{\ifthenelse{\equal{#3}{διάμεσος Α,Β,Γ}}{\isoname{Α} \\ \isoname{Β} \\ \isoname{Γ}}{}}}}}}}
+\end{scriptsize}
+}
+%ΤΕΛΟΣ
+%===========================================================================================================================================
+
+%===========================================================================================================================================
+%ΣΚΑΛΗΝΟ ΤΡΙΓΩΝΟ
+%===========================================================================================================================================
+%Ορισμός ύψος τριγώνου
+\newcommand{\skalipsos}[1]{
+							\ifthenelse{\equal{#1}{Α}}{\draw (-1,2)-- (-1,0);}{\ifthenelse{\equal{#1}{Β}}{\draw (-2,0)-- (-0.77,1.85);}{\ifthenelse{\equal{#1}{Γ}}{\draw (2,0)-- (-1.2,1.6);}{}}}
+							}
+
+\newcommand{\skalipsosname}[1]{
+							\ifthenelse{\equal{#1}{Α}}{\fill (-1,0) circle (1.5pt);
+														\draw (-1,-0.2) node {\simo{}};}{\ifthenelse{\equal{#1}{Β}}
+														{\fill (-0.77,1.85) circle (1.5pt);
+														\draw (-0.6,2) node {\simo{}};}{\ifthenelse{\equal{#1}{Γ}}
+														{\fill (-1.2,1.6) circle (1.5pt);
+														\draw (-1.4,1.8) node {\simo{}};}{}}}
+							}
+
+%Ορισμός διχοτόμου γωνίας τριγώνου
+\newcommand{\skaldixotomos}[1]{
+							\ifthenelse{\equal{#1}{Α}}{\draw (-1,2)-- (-0.47,0);}{\ifthenelse{\equal{#1}{Β}}{\draw (-2,0)-- (0.08,1.28);}{\ifthenelse{\equal{#1}{Γ}}{\draw (2,0)-- (-1.47,1.05);}{}}}
+							}
+
+\newcommand{\skaldixotomosname}[1]{
+							\ifthenelse{\equal{#1}{Α}}{\fill (-0.47,0) circle (1.5pt);
+														\draw (-0.47,-0.2) node {\simo{}};}{\ifthenelse{\equal{#1}{Β}}
+														{\fill (0.08,1.28) circle (1.5pt);
+														\draw (0.2,1.5) node {\simo{}};}{\ifthenelse{\equal{#1}{Γ}}
+														{\fill (-1.47,1.05) circle (1.5pt);
+														\draw (-1.6,1.25) node {\simo{}};}{}}}
+							}
+
+%Ορισμός διαμέσου τριγώνου
+\newcommand{\skaldiamesos}[1]{
+							\ifthenelse{\equal{#1}{Α}}{\draw (-1,2)-- (0,0);}{\ifthenelse{\equal{#1}{Β}}{\draw (-2,0)-- (0.5,1);}{\ifthenelse{\equal{#1}{Γ}}{\draw (2,0)-- (-1.5,1);}{}}}
+							}
+
+\newcommand{\skaldiamesosname}[1]{
+							\ifthenelse{\equal{#1}{Α}}{\fill (0,0) circle (1.5pt);
+														\draw (0,-0.2) node {\simo{}};}{\ifthenelse{\equal{#1}{Β}}
+														{\fill (0.5,1) circle (1.5pt);
+														\draw (0.7,1.2) node {\simo{}};}{\ifthenelse{\equal{#1}{Γ}}
+														{\fill (-1.5,1) circle (1.5pt);
+														\draw (-1.7,1.2) node {\simo{}};}{}}}
+							}
+
+
+\newcommand{\skalino}[3]{							
+\setcounter{sim}{1}
+%Ορισμός χωρίου
+\clip(-2.5,-0.5) rectangle (2.5,3.5);
+
+%Ορισμός ευθειών τριγώνου
+%ΑΒ
+\draw (-1,2)-- (-2,0);
+%ΒΓ
+\draw (-1,2)-- (2,0);
+%ΑΓ
+\draw (2,0)-- (-2,0);
+%Διχοτόμος
+\ifthenelse{\equal{#1}{διχοτόμος Α}} {\skaldixotomos{Α}} {\ifthenelse{\equal{#1}{διχοτόμος Β}} {\skaldixotomos{Β}} 
+{\ifthenelse{\equal{#1}{διχοτόμος Γ}}{\skaldixotomos{Γ}} {\ifthenelse{\equal{#1}{διχοτόμος Α,Β}}{\skaldixotomos{Α} \\ \skaldixotomos{Β}}{\ifthenelse{\equal{#1}{διχοτόμος Α,Γ}}{\skaldixotomos{Α} \\ \skaldixotomos{Γ}}{\ifthenelse{\equal{#1}{διχτοτόμος Β,Γ}}{\skaldixotomos{Β} \\ \skaldixotomos{Γ}}{\ifthenelse{\equal{#1}{διχοτόμος Α,Β,Γ}}{\skaldixotomos{Α} \\ \skaldixotomos{Β} \\ \skaldixotomos{Γ}}{}}}}}}}
+%Ύψος
+\ifthenelse{\equal{#2}{ύψος Α}} {\skalipsos{Α}} {\ifthenelse{\equal{#2}{ύψος Β}} {\skalipsos{Β}} 
+{\ifthenelse{\equal{#2}{ύψος Γ}}{\skalipsos{Γ}} {\ifthenelse{\equal{#2}{ύψος Α,Β}}{\skalipsos{Α} \\ \skalipsos{Β}}{\ifthenelse{\equal{#2}{ύψος Α,Γ}}{\skalipsos{Α} \\ \skalipsos{Γ}}{\ifthenelse{\equal{#2}{ύψος Β,Γ}}{\skalipsos{Β} \\ \skalipsos{Γ}}{\ifthenelse{\equal{#2}{ύψος Α,Β,Γ}}{\skalipsos{Α} \\ \skalipsos{Β} \\ \skalipsos{Γ}}{}}}}}}}
+%Διάμεσος
+\ifthenelse{\equal{#3}{διάμεσος Α}} {\skaldiamesos{Α}} {\ifthenelse{\equal{#3}{διάμεσος Β}} {\skaldiamesos{Β}} 
+{\ifthenelse{\equal{#3}{διάμεσος Γ}}{\skaldiamesos{Γ}} {\ifthenelse{\equal{#3}{διάμεσος Α,Β}}{\skaldiamesos{Α} \\ \skaldiamesos{Β}}{\ifthenelse{\equal{#3}{διάμεσος Α,Γ}}{\skaldiamesos{Α} \\ \skaldiamesos{Γ}}{\ifthenelse{\equal{#3}{διάμεσος Β,Γ}}{\skaldiamesos{Β} \\ \skaldiamesos{Γ}}{\ifthenelse{\equal{#3}{διάμεσος Α,Β,Γ}}{\skaldiamesos{Α} \\ \skaldiamesos{Β} \\ \skaldiamesos{Γ}}{}}}}}}}
+
+
+%Ορισμός σημείων
+\begin{scriptsize}
+%Σημείο Α
+\fill (-1,2) circle (1.5pt);
+\draw (-1,2.2) node {$\rm Α$};
+%Σημείο Β
+\fill (-2,0) circle (1.5pt);
+\draw (-2.1,-0.2) node {$\rm Β$};
+%Σημείο Γ
+\fill (2,0) circle (1.5pt);
+\draw (2.1,-0.2) node {$\rm Γ$};
+%Διχοτόμος
+\ifthenelse{\equal{#1}{διχοτόμος Α}} {\skaldixotomosname{Α}} {\ifthenelse{\equal{#1}{διχοτόμος Β}} {\skaldixotomosname{Β}} 
+{\ifthenelse{\equal{#1}{διχοτόμος Γ}}{\skaldixotomosname{Γ}} {\ifthenelse{\equal{#1}{διχοτόμος Α,Β}}{\skaldixotomosname{Α} \\ \skaldixotomosname{Β}}{\ifthenelse{\equal{#1}{διχοτόμος Α,Γ}}{\skaldixotomosname{Α} \\ \skaldixotomosname{Γ}}{\ifthenelse{\equal{#1}{διχτοτόμος Β,Γ}}{\skaldixotomosname{Β} \\ \skaldixotomosname{Γ}}{\ifthenelse{\equal{#1}{διχοτόμος Α,Β,Γ}}{\skaldixotomosname{Α} \\ \skaldixotomosname{Β} \\ \skaldixotomosname{Γ}}{}}}}}}}
+%Ύψος
+\ifthenelse{\equal{#2}{ύψος Α}} {\skalipsosname{Α}} {\ifthenelse{\equal{#2}{ύψος Β}} {\skalipsosname{Β}} 
+{\ifthenelse{\equal{#2}{ύψος Γ}}{\skalipsosname{Γ}} {\ifthenelse{\equal{#2}{ύψος Α,Β}}{\skalipsosname{Α} \\ \skalipsosname{Β}}{\ifthenelse{\equal{#2}{ύψος Α,Γ}}{\skalipsosname{Α} \\ \skalipsosname{Γ}}{\ifthenelse{\equal{#2}{ύψος Β,Γ}}{\skalipsosname{Β} \\ \skalipsosname{Γ}}{\ifthenelse{\equal{#2}{ύψος Α,Β,Γ}}{\skalipsosname{Α} \\ \skalipsosname{Β} \\ \skalipsosname{Γ}}{}}}}}}}
+%Διάμεσος
+\ifthenelse{\equal{#3}{διάμεσος Α}} {\skaldiamesosname{Α}} {\ifthenelse{\equal{#3}{διάμεσος Β}} {\skaldiamesosname{Β}} 
+{\ifthenelse{\equal{#3}{διάμεσος Γ}}{\skaldiamesosname{Γ}} {\ifthenelse{\equal{#3}{διάμεσος Α,Β}}{\skaldiamesosname{Α} \\ \skaldiamesosname{Β}}{\ifthenelse{\equal{#3}{διάμεσος Α,Γ}}{\skaldiamesosname{Α} \\ \skaldiamesosname{Γ}}{\ifthenelse{\equal{#3}{διάμεσος Β,Γ}}{\skaldiamesosname{Β} \\ \skaldiamesosname{Γ}}{\ifthenelse{\equal{#3}{διάμεσος Α,Β,Γ}}{\skaldiamesosname{Α} \\ \skaldiamesosname{Β} \\ \skaldiamesosname{Γ}}{}}}}}}}
+\end{scriptsize}
+}
+%ΤΕΛΟΣ
+%===========================================================================================================================================
+
+%===========================================================================================================================================
+%Δημιουργία ονομάτων σημείων τριγώνων
+\newcounter{sim}
+\newcommand{\simo}[1]{
+\ifthenelse{\equal{\arabic{sim}}{1}}{$\rm Ε$}{
+\ifthenelse{\equal{\arabic{sim}}{2}}{$\rm Δ$}{
+\ifthenelse{\equal{\arabic{sim}}{3}}{$\rm Ζ$}{
+\ifthenelse{\equal{\arabic{sim}}{4}}{$\rm Κ$}{
+\ifthenelse{\equal{\arabic{sim}}{5}}{$\rm Λ$}{
+\ifthenelse{\equal{\arabic{sim}}{6}}{$\rm Μ$}{
+\ifthenelse{\equal{\arabic{sim}}{7}}{$\rm Ν$}{
+\ifthenelse{\equal{\arabic{sim}}{8}}{$\rm Ο$}{
+\ifthenelse{\equal{\arabic{sim}}{9}}{$\rm Η$}{
+\ifthenelse{\equal{\arabic{sim}}{10}}{$\rm Θ$}{
+\ifthenelse{\equal{\arabic{sim}}{11}}{$\rm Ι$}{
+\ifthenelse{\equal{\arabic{sim}}{12}}{$\rm Ρ$}{
+\ifthenelse{\equal{\arabic{sim}}{13}}{$\rm Π$}{
+\ifthenelse{\equal{\arabic{sim}}{14}}{$\rm Σ$}{}}}}}}}}}}}}}} 
+\addtocounter{sim}{1}
+}
+%===========================================================================================================================================
+
+%===========================================================================================================================================
+%Εντολή σχηματισμού τριγώνου
+%===========================================================================================================================================
+\newcommand{\trigono}[5]{
+					\ifthenelse{\equal{#5}{}}{\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]}{\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.#5 cm,y=1.#5 cm]}
+						\ifthenelse{\equal{#1}{ισοσκελές}}{\isoskeles{#2}{#3}{#4}}{\ifthenelse{\equal{#1}{ισόπλευρο}}{\isopleuro{#2}{#3}{#4}}{\ifthenelse{\equal{#1}{σκαληνό}}{\skalino{#2}{#3}{#4}}{}}}
+\end{tikzpicture}
+						}
+%===========================================================================================================================================
+
+
+%===========================================================================================================================================
+%ΤΕΤΑΤΡΩΓΟ
+%===========================================================================================================================================
+%Ορισμός διαγωνίων τετραγώνου
+\newcommand{\diamt}[1]{
+						\ifthenelse{\equal{#1}{ΑΓ}}{\draw (-1.5,1.5)-- (1.5,-1.5);}{\ifthenelse{\equal{#1}{ΒΔ}}{\draw (1.5,1.5)-- (-1.5,-1.5);}{}}
+					  }
+		
+
+\newcommand{\tetragono}[1]{	
+%Ορισμός χωρίου
+\clip(-2,-2) rectangle (2,2);
+
+%Ορισμός ευθειών τετραγώνου
+%ΑΒ
+\draw (-1.5,1.5)-- (1.5,1.5);
+%ΒΓ
+\draw (1.5,1.5)-- (1.5,-1.5);
+%ΓΔ
+\draw (1.5,-1.5)-- (-1.5,-1.5);
+%ΔΑ
+\draw (-1.5,-1.5)-- (-1.5,1.5);
+\ifthenelse{\equal{#1}{διαγώνιος ΑΓ}}{\diamt{ΑΓ}}{\ifthenelse{\equal{#1}{διαγώνιος ΒΔ}}{\diamt{ΒΔ}}{\ifthenelse{\equal{#1}{διαγώνιος ΑΓ,ΒΔ}}{\diamt{ΑΓ} \\ \diamt{ΒΔ}}{}}}
+
+
+%Ορισμός σημείων
+\begin{scriptsize}
+%Σημείο Α
+\fill (-1.5,1.5) circle (1.5pt);
+\draw (-1.7,1.7) node {$\rm Α$};
+%Σημείο Β
+\fill (1.5,1.5) circle (1.5pt);
+\draw (1.7,1.7) node {$\rm Β$};
+%Σημείο Γ
+\fill (1.5,-1.5) circle (1.5pt);
+\draw (1.7,-1.7) node {$\rm Γ$};
+%Σημείο Δ
+\fill (-1.5,-1.5) circle (1.5pt);
+\draw (-1.7,-1.7) node {$\rm Δ$};
+
+\end{scriptsize}
+}
+%ΤΕΛΟΣ
+%===========================================================================================================================================
+
+%===========================================================================================================================================
+%ΟΡΘΟΓΩΝΙΟ
+%===========================================================================================================================================
+%Ορισμός διαγωνίων ορθογωνίου
+\newcommand{\diamor}[1]{
+						\ifthenelse{\equal{#1}{ΑΓ}}{\draw (-1.5,1)-- (1.5,-1);}{\ifthenelse{\equal{#1}{ΒΔ}}{\draw (1.5,1)-- (-1.5,-1);}{}}
+					  }
+		
+
+\newcommand{\ortho}[1]{	
+%Ορισμός χωρίου
+\clip(-2,-2) rectangle (2,2);
+
+%Ορισμός ευθειών ορθογωνίου
+%ΑΒ
+\draw (-1.5,1)-- (1.5,1);
+%ΒΓ
+\draw (1.5,1)-- (1.5,-1);
+%ΓΔ
+\draw (1.5,-1)-- (-1.5,-1);
+%ΔΑ
+\draw (-1.5,-1)-- (-1.5,1);
+\ifthenelse{\equal{#1}{διαγώνιος ΑΓ}}{\diamor{ΑΓ}}{\ifthenelse{\equal{#1}{διαγώνιος ΒΔ}}{\diamor{ΒΔ}}{\ifthenelse{\equal{#1}{διαγώνιος ΑΓ,ΒΔ}}{\diamor{ΑΓ} \\ \diamor{ΒΔ}}{}}}
+
+
+%Ορισμός σημείων
+\begin{scriptsize}
+%Σημείο Α
+\fill (-1.5,1) circle (1.5pt);
+\draw (-1.7,1.2) node {$\rm Α$};
+%Σημείο Β
+\fill (1.5,1) circle (1.5pt);
+\draw (1.7,1.2) node {$\rm Β$};
+%Σημείο Γ
+\fill (1.5,-1) circle (1.5pt);
+\draw (1.7,-1.2) node {$\rm Γ$};
+%Σημείο Δ
+\fill (-1.5,-1) circle (1.5pt);
+\draw (-1.7,-1.2) node {$\rm Δ$};
+
+\end{scriptsize}
+}
+%ΤΕΛΟΣ
+%===========================================================================================================================================
+
+%===========================================================================================================================================
+%ΠΑΡΑΛΛΗΛΟΓΡΑΜΜΟ
+%===========================================================================================================================================
+%Ορισμός διαγωνίων παραλληλογράμμου
+\newcommand{\diampar}[1]{
+						\ifthenelse{\equal{#1}{ΑΓ}}{\draw (-0.5,1)-- (1,-0.5);}{\ifthenelse{\equal{#1}{ΒΔ}}{\draw (2,1)-- (-1.5,-0.5);}{}}
+					  }
+		
+
+\newcommand{\parall}[1]{	
+%Ορισμός χωρίου
+\clip(-2,-1) rectangle (2.5,1.5);
+
+%Ορισμός ευθειών παραλληλογράμμου
+%ΑΒ
+\draw (-0.5,1)-- (2,1);
+%ΒΓ
+\draw (2,1)-- (1,-0.5);
+%ΓΔ
+\draw (1,-0.5)-- (-1.5,-0.5);
+%ΔΑ
+\draw (-1.5,-0.5)-- (-0.5,1);
+\ifthenelse{\equal{#1}{διαγώνιος ΑΓ}}{\diampar{ΑΓ}}{\ifthenelse{\equal{#1}{διαγώνιος ΒΔ}}{\diampar{ΒΔ}}{\ifthenelse{\equal{#1}{διαγώνιος ΑΓ,ΒΔ}}{\diampar{ΑΓ} \\ \diampar{ΒΔ}}{}}}
+
+
+%Ορισμός σημείων
+\begin{scriptsize}
+%Σημείο Α
+\fill (-0.5,1) circle (1.5pt);
+\draw (-0.7,1.2) node {$\rm Α$};
+%Σημείο Β
+\fill (2,1) circle (1.5pt);
+\draw (2.2,1.2) node {$\rm Β$};
+%Σημείο Γ
+\fill (1,-0.5) circle (1.5pt);
+\draw (1.2,-0.7) node {$\rm Γ$};
+%Σημείο Δ
+\fill (-1.5,-0.5) circle (1.5pt);
+\draw (-1.7,-0.7) node {$\rm Δ$};
+
+\end{scriptsize}
+}
+%ΤΕΛΟΣ
+%===========================================================================================================================================
+
+%===========================================================================================================================================
+%ΡΟΜΒΟΣ
+%===========================================================================================================================================
+%Ορισμός διαγωνίων ρόμβος
+\newcommand{\diamrom}[1]{
+						\ifthenelse{\equal{#1}{ΑΓ}}{\draw (0,1.5)-- (0,-1.5);}{\ifthenelse{\equal{#1}{ΒΔ}}{\draw (1,0)-- (-1,0);}{}}
+					  }
+		
+
+\newcommand{\romvos}[1]{	
+%Ορισμός χωρίου
+\clip(-1.5,-2) rectangle (1.5,2);
+
+%Ορισμός ευθειών ρόμβος
+%ΑΒ
+\draw (0,1.5)-- (1,0);
+%ΒΓ
+\draw (1,0)-- (0,-1.5);
+%ΓΔ
+\draw (0,-1.5)-- (-1,0);
+%ΔΑ
+\draw (-1,0)-- (0,1.5);
+\ifthenelse{\equal{#1}{διαγώνιος ΑΓ}}{\diamrom{ΑΓ}}{\ifthenelse{\equal{#1}{διαγώνιος ΒΔ}}{\diamrom{ΒΔ}}{\ifthenelse{\equal{#1}{διαγώνιος ΑΓ,ΒΔ}}{\diamrom{ΑΓ} \\ \diamrom{ΒΔ}}{}}}
+
+
+%Ορισμός σημείων
+\begin{scriptsize}
+%Σημείο Α
+\fill (0,1.5) circle (1.5pt);
+\draw (0,1.7) node {$\rm Α$};
+%Σημείο Β
+\fill (1,0) circle (1.5pt);
+\draw (1.2,0) node {$\rm Β$};
+%Σημείο Γ
+\fill (0,-1.5) circle (1.5pt);
+\draw (0,-1.7) node {$\rm Γ$};
+%Σημείο Δ
+\fill (-1,0) circle (1.5pt);
+\draw (-1.2,-0) node {$\rm Δ$};
+
+\end{scriptsize}
+}
+%ΤΕΛΟΣ
+%===========================================================================================================================================
+
+
+%===========================================================================================================================================
+%Εντολή σχηματισμού σχήματος
+%===========================================================================================================================================
+\newcommand{\sxima}[3]{
+					\ifthenelse{\equal{#3}{}}{\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]}{\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.#3 cm,y=1.#3 cm]}
+						\ifthenelse{\equal{#1}{τετράγωνο}}{\tetragono{#2}}{\ifthenelse{\equal{#1}{ορθογώνιο}}{\ortho{#2}}{\ifthenelse{\equal{#1}{παραλληλόγραμμο}}{\parall{#2}}{\ifthenelse{\equal{#1}{ρόμβος}}{\romvos{#2}}{}}}}
+\end{tikzpicture}
+						}
+%===========================================================================================================================================
+
+%===========================================================================================================================================
+%ΤΡΑΠΕΖΙΟ
+%===========================================================================================================================================
+%Ορισμός διαγωνίων τραπεζίου
+\newcommand{\diagtra}[1]{
+						\ifthenelse{\equal{#1}{ΑΓ}}{\draw (-1,1)-- (2,-0.5);}{\ifthenelse{\equal{#1}{ΒΔ}}{\draw (0.5,1)-- (-1.5,-0.5);}{}}
+					  }
+
+\newcommand{\trap}[3]{	
+%Ορισμός χωρίου
+\clip(-2,-1) rectangle (2.5,1.5);
+
+%Ορισμός ευθειών τραπεζίου
+%ΑΒ
+\draw (-1,1)-- (0.5,1);
+%ΒΓ
+\draw (0.5,1)-- (2,-0.5);
+%ΓΔ
+\draw (2,-0.5)-- (-1.5,-0.5);
+%ΔΑ
+\draw (-1.5,-0.5)-- (-1,1);
+\ifthenelse{\equal{#1}{διαγώνιος ΑΓ}}{\diagtra{ΑΓ}}{\ifthenelse{\equal{#1}{διαγώνιος ΒΔ}}{\diagtra{ΒΔ}}{\ifthenelse{\equal{#1}{διαγώνιος ΑΓ,ΒΔ}}{\diagtra{ΑΓ} \\ \diagtra{ΒΔ}}{}}}
+%Διάμεσος
+\ifthenelse{\equal{#2}{διάμεσος}}{\draw (-1.25,0.25)-- (1.25,0.25);}{}
+
+%Ορισμός σημείων
+\begin{scriptsize}
+%Σημείο Α
+\fill (-1,1) circle (1.5pt);
+\draw (-1.2,1.2) node {$\rm Α$};
+%Σημείο Β
+\fill (0.5,1) circle (1.5pt);
+\draw (0.7,1.2) node {$\rm Β$};
+%Σημείο Γ
+\fill (2,-0.5) circle (1.5pt);
+\draw (2.2,-0.7) node {$\rm Γ$};
+%Σημείο Δ
+\fill (-1.5,-0.5) circle (1.5pt);
+\draw (-1.7,-0.7) node {$\rm Δ$};
+%Διάμεσος
+\ifthenelse{\equal{#2}{διάμεσος}}{\fill (-1.25,0.25) circle (1.5pt);
+\draw (-1.47,0.25) node {$\rm Ε$};
+
+\fill (1.25,0.25) circle (1.5pt);
+\draw (1.47,0.25) node {$\rm Ζ$};}{}
+%Σημεία τομής διαμέσου διαγωνίων
+\ifthenelse{\equal{#3}{σημεία τομής}}{\fill (-0.5,0.25) circle (1.5pt);
+\draw (-0.5,0.05) node {$\rm Κ$};
+
+\fill (0.5,0.25) circle (1.5pt);
+\draw (0.5,0.05) node {$\rm Λ$};}{}
+\end{scriptsize}
+}
+%ΤΕΛΟΣ
+%===========================================================================================================================================
+
+%===========================================================================================================================================
+%ΤΡΑΠΕΖΙΟ ΙΣΟΣΚΕΛΕΣ
+%===========================================================================================================================================
+%Ορισμός διαγωνίων ισοσκελούς τραπεζίου
+\newcommand{\diamisotra}[1]{
+						\ifthenelse{\equal{#1}{ΑΓ}}{\draw (-0.5,1)-- (1.5,-0.5);}{\ifthenelse{\equal{#1}{ΒΔ}}{\draw (0.5,1)-- (-1.5,-0.5);}{}}
+					  }
+		
+\newcommand{\isotrap}[3]{	
+%Ορισμός χωρίου
+\clip(-2,-1) rectangle (2,1.5);
+
+%Ορισμός ευθειών ισοσκελούς τραπεζίου
+%ΑΒ
+\draw (-0.5,1)-- (0.5,1);
+%ΒΓ
+\draw (0.5,1)-- (1.5,-0.5);
+%ΓΔ
+\draw (1.5,-0.5)-- (-1.5,-0.5);
+%ΔΑ
+\draw (-1.5,-0.5)-- (-0.5,1);
+\ifthenelse{\equal{#1}{διαγώνιος ΑΓ}}{\diamisotra{ΑΓ}}{\ifthenelse{\equal{#1}{διαγώνιος ΒΔ}}{\diamisotra{ΒΔ}}{\ifthenelse{\equal{#1}{διαγώνιος ΑΓ,ΒΔ}}{\diamisotra{ΑΓ} \\ \diamisotra{ΒΔ}}{}}}
+%Διάμεσος
+\ifthenelse{\equal{#2}{διάμεσος}}{\draw (-1,0.25)-- (1,0.25);}{}
+
+%Ορισμός σημείων
+\begin{scriptsize}
+%Σημείο Α
+\fill (-0.5,1) circle (1.5pt);
+\draw (-0.7,1.2) node {$\rm Α$};
+%Σημείο Β
+\fill (0.5,1) circle (1.5pt);
+\draw (0.7,1.2) node {$\rm Β$};
+%Σημείο Γ
+\fill (1.5,-0.5) circle (1.5pt);
+\draw (1.7,-0.7) node {$\rm Γ$};
+%Σημείο Δ
+\fill (-1.5,-0.5) circle (1.5pt);
+\draw (-1.7,-0.7) node {$\rm Δ$};
+%Διάμεσος
+\ifthenelse{\equal{#2}{διάμεσος}}{\fill (-1,0.25) circle (1.5pt);
+\draw (-1.2,0.25) node {$\rm Ε$};
+
+\fill (1,0.25) circle (1.5pt);
+\draw (1.2,0.25) node {$\rm Ζ$};}{}
+%Σημεία τομής διαμέσου διαγωνίων
+\ifthenelse{\equal{#3}{σημεία τομής}}{\fill (-0.5,0.25) circle (1.5pt);
+\draw (-0.5,0.05) node {$\rm Κ$};
+
+\fill (0.5,0.25) circle (1.5pt);
+\draw (0.5,0.05) node {$\rm Λ$};}{}
+\end{scriptsize}
+}
+%ΤΕΛΟΣ
+%===========================================================================================================================================
+
+%===========================================================================================================================================
+%Εντολή σχηματισμού τραπεζίου
+%===========================================================================================================================================
+\newcommand{\trapezio}[5]{
+					\ifthenelse{\equal{#5}{}}{\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]}{\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.#5 cm,y=1.#5 cm]}
+						\ifthenelse{\equal{#1}{τραπέζιο}}{\trap{#2}{#3}{#4}}{\ifthenelse{\equal{#1}{ισοσκελές}}{\isotrap{#2}{#3}{#4}}{}}
+\end{tikzpicture}
+						}
+%===========================================================================================================================================
+
+%===========================================================================================================================================
+%ΚΥΚΛΟΣ
+%===========================================================================================================================================
+\newcommand{\kik}[3]{
+\setcounter{simia}{1}
+%Ορισμός χωρίου
+\clip(-2.5,-2.5) rectangle (2.5,2.5);
+%Ορισμός κύκλου
+\draw(0,0) circle (2cm);
+%Ακτίνα
+\ifthenelse{\equal{#1}{ακτίνα}}{\draw (0,0)-- (1.32,-1.5);}{}
+%Διάμετρος
+\ifthenelse{\equal{#2}{διάμετρος}}{\draw (-1.32,-1.5)-- (1.32,1.5);}{\ifthenelse{\equal{#2}{διάμετροι}}{\draw (0,2)-- (0,-2);
+\draw (2,0)-- (-2,0);}{}}
+%Χορδή
+\ifthenelse{\equal{#3}{χορδή}}{\draw (0,2)-- (2,0);}{\ifthenelse{\equal{#3}{χορδή-απόστημα}}{\draw (0,2)-- (2,0);
+\draw (0,0)-- (1,1);}{\ifthenelse{\equal{#3}{χορδές}}{\draw (0,2)-- (2,0);
+\draw (-1.27,1.54)-- (-1.65,-1.13);}{\ifthenelse{\equal{#3}{χορδή-ακτίνες}}{\draw (0,0)-- (2,0);
+\draw (0,0)-- (0.72,1.87);
+\draw (2,0)-- (0.72,1.87);}{}}}}
+
+\begin{scriptsize}
+%Κέντρο του κύκλου
+\fill (0,0) circle (1.5pt);
+\draw (-0.15,-0.15) node {$\rm Ο$};
+%Σημείο για την ακτίνα του κύκλου
+\ifthenelse{\equal{#1}{ακτίνα}}{\fill (1.32,-1.5) circle (1.5pt);
+\draw (1.4,-1.7) node {\simio{}};}{}
+%Σημεία για τη διάμεσο του κύκλου
+\ifthenelse{\equal{#2}{διάμετρος}}{\fill (1.32,1.5) circle (1.5pt);
+\draw (1.4,1.7) node {\simio{}};
+\fill (-1.32,-1.5) circle (1.5pt);
+\draw (-1.4,-1.7) node {\simio{}};}{\ifthenelse{\equal{#2}{διάμετροι}}{
+\fill (0,2) circle (1.5pt);
+\draw (0,2.2) node {\simio{}};
+\fill (0,-2) circle (1.5pt);
+\draw (0,-2.2) node {\simio{}};
+\fill (2,0) circle (1.5pt);
+\draw (2.2,0) node {\simio{}};
+\fill (-2,0) circle (1.5pt);
+\draw (-2.2,0) node {\simio{}};}{}}
+%Σημεία για τη χορδή του κύκλου
+\ifthenelse{\equal{#3}{χορδή}}{\fill (0,2) circle (1.5pt);
+\draw (0,2.2) node {\simio{}};
+\fill (2,0) circle (1.5pt);
+\draw (2.2,0) node {\simio{}};}{\ifthenelse{\equal{#3}{χορδή-απόστημα}}{\fill (0,2) circle (1.5pt);
+\draw (0,2.2) node {\simio{}};
+\fill (2,0) circle (1.5pt);
+\draw (2.2,0) node {\simio{}};
+\fill (1,1) circle (1.5pt);
+\draw (1.2,1.2) node {$\rm Κ$};}{\ifthenelse{\equal{#3}{χορδές}}{
+\fill (0,2) circle (1.5pt);
+\draw (0,2.2) node {\simio{}};
+\fill (2,0) circle (1.5pt);
+\draw (2.2,0) node {\simio{}};
+\fill (-1.27,1.54) circle (1.5pt);
+\draw (-1.27,1.74) node {\simio{}};
+\fill (-1.65,-1.13) circle (1.5pt);
+\draw (-1.75,-1.33) node {\simio{}};}{\ifthenelse{\equal{#3}{χορδή-ακτίνες}}{
+\fill (0.72,1.87) circle (1.5pt);
+\draw (0.92,2.07) node {\simio{}};
+\fill (2,0) circle (1.5pt);
+\draw (2.2,0) node {\simio{}};}{}}}}
+\end{scriptsize}
+}
+%ΤΕΛΟΣ
+%===========================================================================================================================================
+
+%===========================================================================================================================================
+%Δημιουργία ονομάτων σημείων κύκλου
+\newcounter{simia}
+\newcommand{\simio}[1]{
+\ifthenelse{\equal{\arabic{simia}}{1}}{$\rm Α$}{
+\ifthenelse{\equal{\arabic{simia}}{2}}{$\rm Β$}{
+\ifthenelse{\equal{\arabic{simia}}{3}}{$\rm Γ$}{
+\ifthenelse{\equal{\arabic{simia}}{4}}{$\rm Δ$}{
+\ifthenelse{\equal{\arabic{simia}}{5}}{$\rm Ε$}{
+\ifthenelse{\equal{\arabic{simia}}{6}}{$\rm Ζ$}{
+\ifthenelse{\equal{\arabic{simia}}{7}}{$\rm Κ$}{
+\ifthenelse{\equal{\arabic{simia}}{8}}{$\rm Λ$}{
+\ifthenelse{\equal{\arabic{simia}}{9}}{$\rm Μ$}{
+\ifthenelse{\equal{\arabic{simia}}{10}}{$\rm Η$}{
+\ifthenelse{\equal{\arabic{simia}}{11}}{$\rm Θ$}{
+\ifthenelse{\equal{\arabic{simia}}{12}}{$\rm Ι$}{
+\ifthenelse{\equal{\arabic{simia}}{13}}{$\rm Ν$}{
+\ifthenelse{\equal{\arabic{simia}}{14}}{$\rm Ρ$}{}}}}}}}}}}}}}} 
+\addtocounter{simia}{1}
+}
+%===========================================================================================================================================
+
+%===========================================================================================================================================
+%Εντολή σχηματισμού κύκλου
+%===========================================================================================================================================
+\newcommand{\kiklos}[4]{
+					\ifthenelse{\equal{#4}{}}{\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]}{\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.#4 cm,y=1.#4 cm]}
+						\kik{#1}{#2}{#3}
+\end{tikzpicture}
+						}
+%===========================================================================================================================================
+
+
+
+\endinput
+%% ============================================================================
+%% End of file `euclid.sty'.
