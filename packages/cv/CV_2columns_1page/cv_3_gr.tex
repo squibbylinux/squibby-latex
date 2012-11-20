@@ -1,0 +1,251 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Two Column Curriculum Vitae XeLaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Alessandro (The CV Inn)
+%
+% IMPORTANT: THIS TEMPLATE NEEDS TO BE COMPILED WITH XeLaTeX
+%
+% This template uses several fonts not included with Windows/Linux by
+% default. If you get compilation errors saying a font is missing, find the line
+% on which the font is used and either change it to a font included with your
+% operating system or comment the line out to use the default font.
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt]{article} % Font size (10pt, 11pt or 12pt)
+
+\usepackage[hmargin=1.25cm, vmargin=1.5cm]{geometry} % Document margins
+
+\usepackage{marvosym} % Required for symbols in the colored box
+\usepackage{ifsym} % Required for symbols in the colored box
+
+\usepackage[usenames,dvipsnames]{xcolor} % Allows the definition of hex colors
+\usepackage{tabularx}
+% Fonts and tweaks for XeLaTeX
+\usepackage{fontspec,xltxtra,xunicode}
+\usepackage{xgreek}% Για ελληνικό συλλαβισμό.
+\setlanguage{monogreek}
+
+\defaultfontfeatures{Mapping=tex-text}
+%\setmainfont[Mapping=tex-text]{KerkisSans}
+\setromanfont[Mapping=tex-text]{Hoefler Text} % Main document font
+\setromanfont[Mapping=tex-text]{KerkisSans} % Main document font
+\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{KerkisSans} % Font for your name at the top
+%\setmonofont[Scale=MatchLowercase]{Andale Mono}
+
+% Colors for links, text and headings
+\usepackage{hyperref}
+\definecolor{linkcolor}{HTML}{506266} % Blue-gray color for links
+\definecolor{shade}{HTML}{F5DD9D} % Peach color for the contact information box
+\definecolor{text1}{HTML}{2b2b2b} % Main document font color, off-black
+\definecolor{headings}{HTML}{701112} % Dark red color for headings
+% Other color palettes: shade=B9D7D9 and linkcolor=A40000; shade=D4D7FE and linkcolor=FF0080
+
+\hypersetup{colorlinks,breaklinks, urlcolor=linkcolor, linkcolor=linkcolor} % Set up links and colors
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+% Headers and footers can be added with the \lhead{} \rhead{} \lfoot{} \rfoot{} commands
+% Example footer:
+%\rfoot{\color{headings} {\sffamily Last update: \today}. Typeset with Xe\LaTeX}
+
+\renewcommand{\headrulewidth}{0pt} % Get rid of the default rule in the header
+
+\usepackage{titlesec} % Allows creating custom \section's
+
+% Format of the section titles
+\titleformat{\section}{\color{headings}
+\scshape\Large\raggedright}{}{0em}{}[\color{black}\titlerule]
+
+\titlespacing{\section}{0pt}{0pt}{5pt} % Spacing around titles
+
+\begin{document}
+
+\color{text1} % Sets the default text color for the whole document
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\par{\centering{\sffamily\Huge Καμινάκης Νικόλαος}\\ % Your name
+%{\color{headings}\fontspec[Variant = 2]{Baskerville Italic} Βιογραφικό Σημείωμα\\[15pt]\par}
+	
+%----------------------------------------------------------------------------------------
+
+% Start the left-hand side of the page
+\begin{minipage}[t]{0.48\textwidth}
+\vspace{0pt} % Trick for alignment
+	
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\section{Επαγγελματική πείρα} 
+
+%----------------------------------------------------------------------------------------
+% WORK EXPERIENCE -1-
+
+{\raggedleft\textsc{03/2004 --- σήμερα}\par}
+
+{\raggedright\large \href{http://www.eads-3sigma.gr}{EADS-3SIGMA S.A.}, Χανιά\\
+
+\textit{Μηχανικός Ανάπτυξης μη επαδρωμένων οχημάτων}\\[5pt]}
+
+\normalsize{Μηχανολογική σχεδίαση και ανάπτυξη (3D CAD) μη επανδρωμένων αεροσκαφών (UAV's), στόχων επιφανείας, συστήματος 
+εκτόξευσης αεροσκαφών, σταθμού ελέγχου εδάφους των στόχων (GCS), σχεδιασμός και επίβλεψη πρωτότυπων κατασκευών και μέσων 
+παραγωγής (μήτρες και καλούπια για πτέρυγες και ατράκτους αεροσκαφών), μελέτη εγκατάστασης εσωτερικών και εξωτερικών φορτίων 
+(payloads) σε UAV's. Διαχείριση προϊόντων με λίστες υλικών και σχεδίων βάση συστήματος διαχείρισης ποιότητας της εταιρίας (ISO 
+9001:2008) και εσωτερικής διαδικασίας διαχείρισης εγγράφων (Configuration Management). Η τρισδιάστατη μοντελοποίηση και η 
+παραγωγή 2d σχεδίων έγινε με το λογισμικό Pro/Engineer Wildfire 2 \& 5.}\\
+
+%----------------------------------------------------------------------------------------
+% WORK EXPERIENCE -2-
+
+{\raggedleft\textsc{11/2001 --- 03/2004}\par}
+
+{\raggedright\large INFOCAD S.A., Αθήνα\\
+\textit{Μηχανικός Εφαρμογών, και υποστήριξης προϊόντων}\\[5pt]}
+
+\normalsize{Υπηρεσίες εκπαίδευσης και υποστήριξης στο λογισμικό Pro/Engineer: Basic Solid modeling, Sheetmetal Design, 
+Parametric Surfaces, 2d Drawings, Pro/NC Milling, Turning. Ανάπτυξη postprocessors, για 3-αξονικές φρέζες, 2-αξονικούς τόρνους
+με χρήση του Gpost. Υποστήριξη πωλήσεων λογισμικού.}
+\\
+
+%----------------------------------------------------------------------------------------
+% WORK EXPERIENCE -3-
+
+{\raggedleft\textsc{03/2000 --- 09/2001}\par}
+
+{\raggedright\large Εκπλήρωση στρατιωτικών υποχρεώσεων}\\
+
+%\normalsize{Received pre-placed offer from the Exotics Trading Desk as a result of very positive review. Rated ``truly distinctive" for Analytical Skills and Teamwork.}\\
+
+%----------------------------------------------------------------------------------------
+% WORK EXPERIENCE -4-
+
+{\raggedleft\textsc{07/1998 --- 01/2000}\par}
+
+{\raggedright\large Euro-Link S.A.,  Αθήνα\\
+\textit{Διαχειριστής Συστημάτων, Εφαρμογών και Δικτύων}\\[5pt]}
+
+\normalsize{Διαχείριση PC's, τοπικών δικτύων, δικτύου internet. Διαχείριση,υποστήριξη, και ανάπτυξη εφαρμογής τιμολόγισης της υπηρεσίας Fax over IP. Εκπόνηση διπλωματικής εργασίας.}\\
+
+%----------------------------------------------------------------------------------------
+% WORK EXPERIENCE -5-
+
+%{\raggedleft\textsc{July 2008 -- Oct 2008}\par}
+%
+%{\raggedright\large 1\textsuperscript{st} year Analyst at \textsc{Lehman Brothers}, London\\
+%\textit{Commodities Structured Trading}\\[5pt]}
+%
+%\normalsize{Developed spreadsheets for risk analysis on exotic derivatives on a wide array of commodities (ags, oils, precious and base metals), managed blotter and secondary trades on structured notes, liaised with Middle Office, Sales and Structuring for bookkeeping.}\\
+%
+%----------------------------------------------------------------------------------------	
+
+\end{minipage} % End left-hand side of the page
+\hfill
+% Start the right-hand side of the page
+\begin{minipage}[t]{0.48\textwidth} 
+\vspace{0pt} %trick for alignment
+
+%----------------------------------------------------------------------------------------
+%	COLORED BOX
+%----------------------------------------------------------------------------------------
+
+\colorbox{shade}{\textcolor{text1}{
+\begin{tabular}{c|p{7cm}}
+\raisebox{-4pt}{\textifsymbol{18}} & Παπαφλέσσα 6, Χανιά, GR73100 \\ % Address
+\raisebox{-3pt}{\Mobilefone} & +30 6937 985627 \\ % Phone number
+\raisebox{-1pt}{\Letter} & \href{mailto:nkaminakis@gmail.com}{nkaminakis@gmail.com} \\ % Email address
+%\Keyboard & \href{http://www.johnsmith.com}{http://www.johnsmith.com} \\ % Website
+\end{tabular}
+}
+}\\[5pt]
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Εκπαίδευση}
+\begin{tabularx}{\linewidth}{r X}
+%----------------------------------------------------------------------------------------
+% EDUCATION -1-
+
+03/2009 --- \textsc{Σήμερα} & \textbf{Διδακτορικό Δίπλωμα} \\ 
+& \textsc{Τμήμα Μηχανικών Παραγωγής και Διοίκησης}, \textit{Πολυτεχνείο Κρήτης}\\
+Θέμα:& Τοπολογική βελτιστοποίηση πολυμορφικών κατασκευών και μηχανισμών με χρήση ολικής και πολυκριτήριας βελτιστοποίησης.\\
+
+%----------------------------------------------------------------------------------------
+% EDUCATION -2-
+
+09/2005 --- 03/2009 & \textbf{Μεταπτυχιακό Δίπλωμα Ειδίκευσης} \\ 
+& \textsc{Τμήμα Μηχανικών Παραγωγής και Διοίκησης} \\
+& \textit{Πολυτεχνείο Κρήτης}\\
+Θέμα:& Σύνθεση πολυμορφικών εύκαμπτων μηχανισμών με χρήση τοπολογικής βελτιστοποίησης και εξελικτικών αλγορίθμων.\\
+
+%----------------------------------------------------------------------------------------
+% EDUCATION -3-
+
+1993 --- 2000 & \textbf{Δίπλωμα Μηχανικού Παραγωγής \& Διοίκησης, Πολυτεχνείο Κρήτης}\\
+Θέμα:& Τηλεπικοινωνίες: σύγχρονες τάσεις, υπηρεσίες και διοίκηση.\\
+%----------------------------------------------------------------------------------------
+
+\end{tabularx}
+\\[10pt]
+
+%----------------------------------------------------------------------------------------
+%	Publications
+%----------------------------------------------------------------------------------------
+
+\section{Δημοσιεύσεις} 
+\begin{tabularx}{\linewidth}{r X}
+2012	 & \textbf{Topology Optimization for compliant mechanisms, using evolutionary-hybrid algorithms and application to the 
+design of auxetic materials.}\\
+& \textit{Journal of Composites Part B: Engineering (Elsevier)}\\
+
+%----------------------------------------------------------------------------------------
+
+2012	& \textbf{Synthesis of multi-perpose Compliant Mechanisms using Topology Optimization and Evolutionary Algorithms} 
+(υπό κρίση)\\
+& \textit{Journal of Computer methods in Applied Mechanics and Engineering (Elsevier)}\\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	COMPUTER SKILLS
+%----------------------------------------------------------------------------------------
+
+\section{Δεξιότητες πληροφορικής} 
+\begin{tabularx}{\linewidth}{r X}
+Άριστη γνώση
+& \textsc{Pro/Engineer Wildfire 5, Solid, Surfaces, Sheet-metal modeling, Top Down Design, 2d drawings, Mechanisms Design,}\\
+& \textsc{Microsoft Windows, Mac OS X, \LaTeX}\\
+Μέση Γνώση
+& \textsc{Matlab, Microsoft Office, Linux}\\
+
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	COMMUNICATION SKILLS
+%----------------------------------------------------------------------------------------
+
+\section{Ατομικές δεξιότητες και πληροφορίες} 
+\begin{tabularx}{\linewidth}{r X}
+Μητρική & Ελληνική\\
+Αγγλική & Αρκετά καλή κατανόηση και ομιλία, καλή γραπτή επικοινωνία\\
+Πρόσθετες Πληροφορίες & Μέλος Τ.Ε.Ε. ΑΜ93926,\\
+&Μέλος Πανελλήνιου Συλλόγου Μηχανικών Παραγωγής \& Διοίκησης\\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+	
+\end{minipage} % End right-hand side of the page
+
+\end{document}  
